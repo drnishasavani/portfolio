@@ -12,6 +12,29 @@
         .selection-teal::selection { background-color: #ccfbf1; color: #134e4a; }
         [onclick] { cursor: pointer; }
         .modal-active { overflow: hidden; }
+        
+        /* Adjusted specifically to prevent head cutting */
+        .hero-image-container {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 4/5.5; /* Slightly taller aspect to give head room */
+            border-radius: 3rem;
+            overflow: hidden;
+            border: 8px solid white;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            background-color: #f1f5f9;
+        }
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center; /* Forces the crop to start from the top of the photo */
+            filter: grayscale(100%);
+            transition: all 1s ease;
+        }
+        .hero-image-container img:hover {
+            filter: grayscale(0%);
+        }
     </style>
 </head>
 <body class="bg-white text-slate-950 selection-teal">
@@ -28,7 +51,7 @@
     </nav>
 
     <!-- 1. HERO SECTION -->
-    <section class="relative min-h-screen flex items-center pt-20 px-6 md:px-12 lg:px-24 overflow-hidden">
+    <section class="relative min-h-screen flex items-center pt-24 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden">
         <div class="absolute top-0 right-0 w-[35vw] h-full bg-slate-50 hidden lg:block border-l border-slate-100"></div>
         
         <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full max-w-7xl mx-auto">
@@ -60,10 +83,10 @@
             </div>
 
             <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
-                <div class="relative z-10 w-full max-w-[400px] aspect-[4/5] rounded-[3rem] overflow-hidden border-[8px] border-white shadow-2xl bg-slate-100">
-                    <img src="https://dl.dropboxusercontent.com/scl/fi/ewpc2lckln4aj3mtk171a/b2f83292-2a19-4d21-a85d-87a32adfe635.png?rlkey=6in4ha8j9sdcrwb158klz740f" alt="Dr. Nisha S." class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000">
+                <div class="hero-image-container">
+                    <img src="https://dl.dropboxusercontent.com/scl/fi/ewpc2lckln4aj3mtk171a/b2f83292-2a19-4d21-a85d-87a32adfe635.png?rlkey=6in4ha8j9sdcrwb158klz740f" alt="Dr. Nisha S.">
                 </div>
-                <div class="absolute -bottom-6 -left-6 z-20 bg-teal-600 text-white p-6 rounded-3xl shadow-2xl -rotate-6">
+                <div class="absolute -bottom-4 -left-6 z-20 bg-teal-600 text-white p-6 rounded-3xl shadow-2xl -rotate-6">
                     <div class="flex items-center gap-3">
                         <svg class="w-10 h-10 text-teal-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
                         <div>
